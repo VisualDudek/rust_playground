@@ -29,7 +29,9 @@ struct ServerConfig {
 
 // Custom Drop implementation so you can visually verify on the console
 // exactly when heap deallocation takes place.
-todo!("Implement Drop for ServerConfig to observe heap deallocation");
+fn foo() {
+    todo!("Implement Drop for ServerConfig to observe heap deallocation");
+}
 
 // -----------------------------------------------------------------------------
 // Consumers of ServerConfig
