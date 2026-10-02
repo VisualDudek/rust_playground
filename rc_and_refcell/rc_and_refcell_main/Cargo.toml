@@ -1,5 +1,5 @@
 [package]
-name = "rc_and_refcell"
+name = "rc_and_refcell_main"
 version = "0.1.0"
 edition = "2024"
 
