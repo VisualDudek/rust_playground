@@ -101,6 +101,7 @@ fn make_default_config() -> Rc<ServerConfig> {
 
 // TIP: Use `Rc::clone(&rc_instance)` to create a new reference to the same heap allocation without deep-copying.
 // Use `Rc::strong_count(&rc_instance)` to check the current reference count.
+// Use drop() to explicitly decrease the reference count of an `Rc` instance.
 fn step_3_shared_ownership() {
     todo!();
 }
