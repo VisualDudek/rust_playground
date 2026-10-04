@@ -29,8 +29,13 @@ struct ServerConfig {
 
 // Custom Drop implementation so you can visually verify on the console
 // exactly when heap deallocation takes place.
-fn foo() {
-    todo!("Implement Drop for ServerConfig to observe heap deallocation");
+// fn foo() {
+//     todo!("Implement Drop for ServerConfig to observe heap deallocation");
+// }
+impl Drop for ServerConfig {
+    fn drop(&mut self) {
+        println!("Dropping ServerConfig: {:?}", self);
+    }
 }
 
 // -----------------------------------------------------------------------------
@@ -63,7 +68,14 @@ struct MetricsWorker {
 //   - port: 8080
 //   - max_connections: 1000
 fn make_default_config() -> Rc<ServerConfig> {
-    todo!("Construct an Rc<ServerConfig> with the default values specified in the comments");
+    // todo!("Construct an Rc<ServerConfig> with the default values specified in the comments");
+    let local_cfg = Rc::new(ServerConfig {
+        host: String::from("0.0.0.0"),
+        port: 3000,
+        max_connections: 50,
+    });
+    local_cfg
+
 }
 
 // =============================================================================
@@ -103,7 +115,18 @@ fn make_default_config() -> Rc<ServerConfig> {
 // Use `Rc::strong_count(&rc_instance)` to check the current reference count.
 // Use drop() to explicitly decrease the reference count of an `Rc` instance.
 fn step_3_shared_ownership() {
-    todo!();
+    // todo!();
+    let shared_config = make_default_config();
+
+    println!("Count ref {}", Rc::strong_count(&shared_config));
+
+    let foo = Rc::clone(&shared_config);
+
+    println!("Count ref {}", Rc::strong_count(&shared_config));
+
+    drop(shared_config);
+
+    println!("Count ref {}", Rc::strong_count(&foo));
 }
 
 

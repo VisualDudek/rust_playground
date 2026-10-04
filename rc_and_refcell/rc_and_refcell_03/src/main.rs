@@ -262,8 +262,10 @@ fn step_7_runtime_borrow_panic() {
 // 3. Prepend `https://` to the `host` field.
 // 4. Print the modified struct inside the function.
 fn prepend_https_scheme(config: &Rc<RefCell<ServerConfig>>) {
-    todo!();
-    println!("Prepended HTTPS: {}", guard.host);
+    // todo!();
+    let mut mut_config = config.borrow_mut();
+    mut_config.host = format!("https://{}", mut_config.host);
+    println!("Prepended HTTPS: {}", mut_config.host);
 }
 
 // -----------------------------------------------------------------------------

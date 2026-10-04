@@ -21,3 +21,7 @@ version = "0.1.0"
 [[package]]
 name = "rc_and_refcell_main"
 version = "0.1.0"
+
+[[package]]
+name = "threads_main"
+version = "0.1.0"
